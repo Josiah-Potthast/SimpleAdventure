@@ -2,7 +2,7 @@
 
 Object::Object()
 {
-
+	type = STONE;
 }
 
 MATERIAL Object::getMaterial() const
@@ -23,31 +23,6 @@ void Object::dealDamage(int damage, Entity* target)
 void Object::heal(int amount)
 {
 	Entity::heal(amount);
-}
-
-void Object::inflict(Effect* effect)
-{
-	Entity::inflict(effect);
-}
-
-void Object::cure(EFFECT_NAME effectName)
-{
-	Entity::cure(effectName);
-}
-
-void Object::cleanse()
-{
-	Entity::cleanse();
-}
-
-void Object::dispel()
-{
-	Entity::dispel();
-}
-
-void Object::clear()
-{
-	Entity::clear();
 }
 
 void Object::die()

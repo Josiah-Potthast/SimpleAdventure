@@ -17,12 +17,6 @@ public:
 	void dealDamage(int damage, Entity* target) override;
 	void heal(int amount) override;
 
-	void inflict(Effect* effect) override;
-	void cure(EFFECT_NAME effectName) override;
-	void cleanse() override;
-	void dispel() override;
-	void clear() override;
-
 	void die() override;
 };
 

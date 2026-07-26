@@ -2,6 +2,7 @@
 #define ENTITY_H
 #include <iostream>
 #include <vector>
+#include "Console.h"
 #include "Effect.h"
 #include "Item.h"
 using namespace std;
@@ -43,11 +44,13 @@ public:
 	virtual void dealDamage(int damage, Entity* target);
 	virtual void heal(int amount);
 
-	virtual void inflict(Effect* effect);
-	virtual void cure(EFFECT_NAME effectName);
-	virtual void cleanse();
-	virtual void dispel();
-	virtual void clear();
+	void inflict(Effect* effect);
+	void cure(EFFECT_NAME effectName);
+	void cleanse();
+	void dispel();
+	void clear();
+
+	void gainItem(Item* item);
 
 	virtual void die() = 0;
 

@@ -76,7 +76,7 @@ void Entity::setMaxSP(int maxSP)
 
 void Entity::setHP(int HP)
 {
-	if (HP < this->maxHP)
+	if (HP <= this->maxHP)
 		this->HP = HP;
 	else
 		throw StatOverMax();
@@ -84,7 +84,7 @@ void Entity::setHP(int HP)
 
 void Entity::setMP(int MP)
 {
-	if (MP < this->maxMP)
+	if (MP <= this->maxMP)
 		this->MP = MP;
 	else
 		throw StatOverMax();
@@ -92,7 +92,7 @@ void Entity::setMP(int MP)
 
 void Entity::setSP(int SP)
 {
-	if (SP < this->maxSP)
+	if (SP <= this->maxSP)
 		this->SP = SP;
 	else
 		throw StatOverMax();
@@ -102,12 +102,16 @@ int Entity::takeDamage(int damage)
 {
 	if (damage > 0)
 	{
-		HP -= damage;
-		if (HP <= 0)
+		if (damage < HP)
+			HP -= damage;
+		else
+		{
+			HP = 0;
 			die();
-		return true;
+		}
+		return damage;
 	}
-	return false;
+	return 0;
 }
 
 void Entity::dealDamage(int damage, Entity* target)
@@ -169,6 +173,11 @@ void Entity::clear()
 {
 	for (int i = 0; i < effects.size(); i++)
 		cure(effects[i]->getName());
+}
+
+void Entity::gainItem(Item* item)
+{
+	inventory.push_back(item);
 }
 
 void Entity::die()

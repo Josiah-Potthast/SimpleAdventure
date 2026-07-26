@@ -7,7 +7,7 @@ class PlayerCharacter : public Entity
 private:
 	int experience;
 	int level;
-	const double levelScaling = 1.2;
+	const double EXP_SCALING = 2;
 	// character class
 public:
 	PlayerCharacter();
@@ -23,12 +23,6 @@ public:
 	int takeDamage(int damage) override;
 	void dealDamage(int damage, Entity* target) override;
 	void heal(int amount) override;
-
-	void inflict(Effect* effect) override;
-	void cure(EFFECT_NAME effectName) override;
-	void cleanse() override;
-	void dispel() override;
-	void clear() override;
 
 	void die() override;
 };

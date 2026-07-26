@@ -8,14 +8,12 @@ using namespace std;
 
 int main()
 {
-	vector<string> menu{ "Number one", "Number two", "Number three", "Number four", "Number five" };
-
-	Console::displayMenu(menu);
-	
-	string str = "Hello World! This additional text is for testing purposes!\n";
-	Console::print(str);
-	Console::setCharDelay(30);
-	Console::print(str, 10);
-
-	Console::print(str);
+	PlayerCharacter player;
+	while (player.getHP() > 0)
+	{
+		cout << "HP: " << player.getHP() << endl;
+		cout << "XP: " << player.getExperience() << endl;
+		cout << "Lvl: " << player.getLevel() << endl << endl;
+		player.takeDamage(1);
+	}
 }

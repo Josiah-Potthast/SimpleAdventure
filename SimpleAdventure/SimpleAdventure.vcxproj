@@ -146,7 +146,9 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PlayerCharacter.h" />
+    <ClInclude Include="Sword.h" />
     <ClInclude Include="System.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
@@ -157,7 +159,9 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="SimpleAdventure.cpp" />
+    <ClCompile Include="Sword.cpp" />
     <ClCompile Include="System.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
