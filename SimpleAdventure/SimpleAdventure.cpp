@@ -8,10 +8,14 @@ using namespace std;
 
 int main()
 {
-	Console::print("Hello World! This additional text is for testing purposes!\n");
-	Console::setCharDelay(50);
-	Console::print("Hello World! This additional text is for testing purposes!\n", 10);
+	vector<string> menu{ "Number one", "Number two", "Number three", "Number four", "Number five" };
 
-	Console::print("Hello World! This additional text is for testing purposes!\n");
+	Console::displayMenu(menu);
+	
+	string str = "Hello World! This additional text is for testing purposes!\n";
+	Console::print(str);
+	Console::setCharDelay(30);
+	Console::print(str, 10);
 
+	Console::print(str);
 }

@@ -12,25 +12,34 @@ void Console::print(string message, int tempDelay)
 void Console::printNumberedList(const vector<string> list)
 {
 	for (int i = 0; i < list.size(); i++)
+	{
+		print(to_string(i + 1) + ". ");
 		print(list[i]);
+		print("\n");
+	}
+}
+
+int Console::displayMenu(vector<string> menu)
+{
+	int choice = 0;
+	printNumberedList(menu);
+	print("Input: ");
+	getInput<int>(choice);
+
+	while (choice < 1 || choice > menu.size())
+	{
+		print("That is not an option, please try again\n");
+		printNumberedList(menu);
+		print("Input: ");
+		getInput<int>(choice);
+	}
+
+	return choice;
 }
 
 void Console::getInput(string& destination)
 {
 	getline(cin, destination);
-	cin.ignore(1000, '\n');
-}
-
-void Console::getInput(int& destination)
-{
-	cin >> destination;
-	cin.ignore(1000, '\n');
-}
-
-void Console::getInput(double& destination)
-{
-	cin >> destination;
-	cin.ignore(1000, '\n');
 }
 
 int Console::getCharDelay()

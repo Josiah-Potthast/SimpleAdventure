@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include "Effect.h"
+#include "Item.h"
 using namespace std;
 
 enum EFFECT_NAME;
@@ -18,18 +19,11 @@ private:
 	int MP; // current mana points
 	int SP; // current stamina points
 	vector<Effect*> effects;
-	// inventory
-public:
+	vector<Item*> inventory;
+protected:
 	Entity();
 	Entity(int maxHP, int maxMP, int maxSP);
 	virtual ~Entity();
-
-	int getMaxHP() const;
-	int getMaxMP() const;
-	int getMaxSP() const;
-	int getHP() const;
-	int getMP() const;
-	int getSP() const;
 
 	void setMaxHP(int maxHP);
 	void setMaxMP(int maxMP);
@@ -37,31 +31,29 @@ public:
 	void setHP(int HP);
 	void setMP(int MP);
 	void setSP(int SP);
+public:
+	int getMaxHP() const;
+	int getMaxMP() const;
+	int getMaxSP() const;
+	int getHP() const;
+	int getMP() const;
+	int getSP() const;
 
-	void takeDamage(int damage);
-	void dealDamage(int damage, Entity* target);
-	void heal(int amount);
-	void useItem(/*Item*/);
+	virtual int takeDamage(int damage);
+	virtual void dealDamage(int damage, Entity* target);
+	virtual void heal(int amount);
 
-	void inflict(Effect* effect);
-	void cure(EFFECT_NAME effectName);
-	void cleanse();
-	void dispel();
-	void clear();
+	virtual void inflict(Effect* effect);
+	virtual void cure(EFFECT_NAME effectName);
+	virtual void cleanse();
+	virtual void dispel();
+	virtual void clear();
 
 	virtual void die() = 0;
 
 	class NegativeStat {};
 	class StatOverMax {};
 	class NegativeDamage {};
-};
-
-enum EFFECT_NAME
-{
-	POISON,
-	BURN,
-	SHOCK,
-	FREEZE,
 };
 
 #endif

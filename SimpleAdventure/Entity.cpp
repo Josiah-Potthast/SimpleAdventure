@@ -98,16 +98,16 @@ void Entity::setSP(int SP)
 		throw StatOverMax();
 }
 
-void Entity::takeDamage(int damage)
+int Entity::takeDamage(int damage)
 {
-	if (damage >= 0)
+	if (damage > 0)
 	{
 		HP -= damage;
 		if (HP <= 0)
 			die();
+		return true;
 	}
-	else
-		throw NegativeDamage();
+	return false;
 }
 
 void Entity::dealDamage(int damage, Entity* target)
@@ -153,20 +153,25 @@ void Entity::cure(EFFECT_NAME effectName)
 
 void Entity::cleanse()
 {
-
+	for (int i = 0; i < effects.size(); i++)
+		if (effects[i]->isPositive() == false)
+			cure(effects[i]->getName());
 }
 
 void Entity::dispel()
 {
-
+	for (int i = 0; i < effects.size(); i++)
+		if (effects[i]->isPositive() == true)
+			cure(effects[i]->getName());
 }
 
 void Entity::clear()
 {
-
+	for (int i = 0; i < effects.size(); i++)
+		cure(effects[i]->getName());
 }
 
 void Entity::die()
 {
-
+	clear();
 }

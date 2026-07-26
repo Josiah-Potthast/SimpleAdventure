@@ -17,9 +17,19 @@ public:
 
 	int getStacks() const;
 	void setStacks(int stacks);
+	bool isPositive() const;
 	EFFECT_NAME getName();
 
 	virtual void trigger() = 0;
+};
+
+enum EFFECT_NAME
+{
+	EFFECT,
+	POISON,
+	BURN,
+	SHOCK,
+	FREEZE,
 };
 
 #endif
