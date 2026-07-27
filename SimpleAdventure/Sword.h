@@ -4,7 +4,9 @@
 
 class Sword : public Weapon
 {
-
+private:
+public:
+	Sword();
 };
 
 #endif

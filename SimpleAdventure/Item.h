@@ -11,7 +11,15 @@ class Item
 private:
 	ITEM_NAME name;
 public:
-	virtual bool use() = 0;
+	Item(ITEM_NAME item);
+
+	ITEM_NAME getName() const;
+
+	virtual int use() = 0;
+
+	static string enumToString(ITEM_NAME item);
+
+	class ItemNotFound {};
 };
 
 enum ITEM_NAME

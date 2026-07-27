@@ -21,6 +21,7 @@ private:
 	int SP; // current stamina points
 	vector<Effect*> effects;
 	vector<Item*> inventory;
+	Item* holding;
 protected:
 	Entity();
 	Entity(int maxHP, int maxMP, int maxSP);
@@ -51,6 +52,9 @@ public:
 	void clear();
 
 	void gainItem(Item* item);
+	void equip(Item* item);
+	vector<Item*> getInventory() const;
+	Item* getHolding();
 
 	virtual void die() = 0;
 

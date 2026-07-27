@@ -1,6 +1,6 @@
 #include "Weapon.h"
 
-Weapon::Weapon() : baseDamage(5)
+Weapon::Weapon(ITEM_NAME item) : Item(item), baseDamage(5)
 {
 
 }
@@ -40,4 +40,9 @@ int Weapon::attack()
 		return 0;
 	else
 		return calcDamage();
+}
+
+int Weapon::use()
+{
+	return attack();
 }

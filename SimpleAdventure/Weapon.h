@@ -7,13 +7,15 @@ class Weapon : public Item
 private:
 	int baseDamage;
 public:
-	Weapon();
+	Weapon(ITEM_NAME item);
 
 	int getBaseDamage() const;
 	void setBaseDamage(int newBase);
 	int calcDamage();
 
 	int attack();
+
+	int use() override;
 };
 
 #endif

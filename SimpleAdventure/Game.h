@@ -2,6 +2,8 @@
 #define GAME_H
 #include <iostream>
 #include "PlayerCharacter.h"
+#include "Dummy.h"
+#include "Sword.h"
 using namespace std;
 
 enum DIFFICULTY;

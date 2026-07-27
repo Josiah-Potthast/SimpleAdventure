@@ -140,10 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
+    <ClInclude Include="Dummy.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="NonPlayerCharacter.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="Sword.h" />
@@ -152,10 +154,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
+    <ClCompile Include="Dummy.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="NonPlayerCharacter.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="SimpleAdventure.cpp" />

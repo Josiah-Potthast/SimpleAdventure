@@ -180,6 +180,21 @@ void Entity::gainItem(Item* item)
 	inventory.push_back(item);
 }
 
+void Entity::equip(Item* item)
+{
+	holding = item;
+}
+
+vector<Item*> Entity::getInventory() const
+{
+	return inventory;
+}
+
+Item* Entity::getHolding()
+{
+	return holding;
+}
+
 void Entity::die()
 {
 	clear();
