@@ -5,12 +5,12 @@ Item::Item(ITEM_NAME item) : name(item)
 
 }
 
-ITEM_NAME Item::getName() const
+ITEM_NAME Item::getNameEnum() const
 {
 	return name;
 }
 
-string Item::enumToString(ITEM_NAME item)
+string Item::getName(ITEM_NAME item)
 {
 	switch (item)
 	{

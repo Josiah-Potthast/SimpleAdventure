@@ -58,6 +58,7 @@ void PlayerCharacter::levelUp()
 int PlayerCharacter::takeDamage(int damage)
 {
 	int realDamage = this->Entity::takeDamage(damage);
+	Console::print("You take " + to_string(realDamage) + " damage\n");
 	if (damage >= 0 && getHP() > 0)
 		gainExperience(realDamage);
 	return realDamage;
@@ -66,6 +67,7 @@ int PlayerCharacter::takeDamage(int damage)
 void PlayerCharacter::dealDamage(int damage, Entity* target)
 {
 	int realDamage = target->takeDamage(damage);
+	Console::print("You deal " + to_string(realDamage) + " damage\n");
 	if (damage >= 0)
 		gainExperience(realDamage);
 }

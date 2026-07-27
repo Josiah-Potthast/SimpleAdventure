@@ -18,9 +18,13 @@ public:
 	int getStacks() const;
 	void setStacks(int stacks);
 	bool isPositive() const;
-	EFFECT_NAME getName();
+	EFFECT_NAME getNameEnum();
+
+	static string getName(EFFECT_NAME effect);
 
 	virtual void trigger() = 0;
+
+	class EffectNotFound {};
 };
 
 enum EFFECT_NAME

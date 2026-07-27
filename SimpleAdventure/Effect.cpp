@@ -28,7 +28,16 @@ bool Effect::isPositive() const
 	return positive;
 }
 
-EFFECT_NAME Effect::getName()
+EFFECT_NAME Effect::getNameEnum()
 {
 	return name;
+}
+
+string Effect::getName(EFFECT_NAME effect)
+{
+	switch (effect)
+	{
+	default:
+		throw EffectNotFound();
+	}
 }

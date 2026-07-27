@@ -13,11 +13,11 @@ private:
 public:
 	Item(ITEM_NAME item);
 
-	ITEM_NAME getName() const;
+	ITEM_NAME getNameEnum() const;
 
 	virtual int use() = 0;
 
-	static string enumToString(ITEM_NAME item);
+	static string getName(ITEM_NAME item);
 
 	class ItemNotFound {};
 };

@@ -50,6 +50,7 @@ public:
 	void cleanse();
 	void dispel();
 	void clear();
+	void checkStatus();
 
 	void gainItem(Item* item);
 	void equip(Item* item);

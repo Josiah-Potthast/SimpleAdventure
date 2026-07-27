@@ -9,3 +9,17 @@ NonPlayerCharacter::NonPlayerCharacter(int maxHP, int maxMP, int maxSP) : Entity
 {
 
 }
+
+NPC_NAME NonPlayerCharacter::getNameEnum() const
+{
+	return name;
+}
+
+string NonPlayerCharacter::getName(NPC_NAME npc)
+{
+	switch (npc)
+	{
+	default:
+		throw NonPlayerCharacterNotFound();
+	}
+}

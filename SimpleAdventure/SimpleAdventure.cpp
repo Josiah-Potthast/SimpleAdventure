@@ -22,7 +22,7 @@ int main()
 
 	vector<Item*> i = player.getInventory();
 	for (Item* p : i)
-		Console::print(Item::enumToString(p->getName()) + "\n");
+		Console::print(Item::getName(p->getNameEnum()) + "\n");
 	while (player.getHP() > 0)
 	{
 		Console::print("HP: " + to_string(player.getHP()) + "\n");

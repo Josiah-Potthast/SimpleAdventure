@@ -13,6 +13,7 @@ Entity::Entity(int maxHP, int maxMP, int maxSP)
 	this->HP = maxHP;
 	this->MP = maxMP;
 	this->SP = maxSP;
+	holding = nullptr;
 }
 
 Entity::~Entity()
@@ -130,7 +131,7 @@ void Entity::heal(int amount)
 void Entity::inflict(Effect* effect)
 {
 	for (int i = 0; i < effects.size(); i++)
-		if (effects[i]->getName() == effect->getName())
+		if (effects[i]->getNameEnum() == effect->getNameEnum())
 		{
 			effects[i]->setStacks(effects[i]->getStacks() + effect->getStacks());
 			return;
@@ -141,7 +142,7 @@ void Entity::inflict(Effect* effect)
 void Entity::cure(EFFECT_NAME effectName)
 {
 	for (int i = 0; i < effects.size(); i++)
-		if (effects[i]->getName() == effectName)
+		if (effects[i]->getNameEnum() == effectName)
 		{
 			for (int j = i; j < effects.size() - 1; j++)
 			{
@@ -151,7 +152,7 @@ void Entity::cure(EFFECT_NAME effectName)
 			}
 			break;
 		}
-	if (effects[effects.size()]->getName() == effectName)
+	if (effects[effects.size()]->getNameEnum() == effectName)
 		effects.pop_back();
 }
 
@@ -159,20 +160,26 @@ void Entity::cleanse()
 {
 	for (int i = 0; i < effects.size(); i++)
 		if (effects[i]->isPositive() == false)
-			cure(effects[i]->getName());
+			cure(effects[i]->getNameEnum());
 }
 
 void Entity::dispel()
 {
 	for (int i = 0; i < effects.size(); i++)
 		if (effects[i]->isPositive() == true)
-			cure(effects[i]->getName());
+			cure(effects[i]->getNameEnum());
 }
 
 void Entity::clear()
 {
 	for (int i = 0; i < effects.size(); i++)
-		cure(effects[i]->getName());
+		cure(effects[i]->getNameEnum());
+}
+
+void Entity::checkStatus()
+{
+	for (Effect* e : effects)
+		Console::print(Effect::getName(e->getNameEnum()) + "\n");
 }
 
 void Entity::gainItem(Item* item)
