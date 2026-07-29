@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="SimpleAdventure/SimpleAdventure.vcxproj" />
+  <Project Path="SimpleAdventure/SimpleAdventure.vcxproj" Id="98b659d4-a3be-49e4-9bad-36b6e059f043" />
 </Solution>

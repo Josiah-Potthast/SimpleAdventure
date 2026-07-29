@@ -7,8 +7,16 @@
 #include "Item.h"
 using namespace std;
 
+enum STAT_TYPE
+{
+	HEALTH,
+	MANA,
+	STAMINA,
+}; 
 enum EFFECT_NAME;
+enum ITEM_NAME;
 class Effect;
+class Item;
 
 class Entity
 {
@@ -22,6 +30,8 @@ private:
 	vector<Effect*> effects;
 	vector<Item*> inventory;
 	Item* holding;
+	int& getStat(STAT_TYPE type);
+	int& getMaxStat(STAT_TYPE type);
 protected:
 	Entity();
 	Entity(int maxHP, int maxMP, int maxSP);
@@ -41,9 +51,9 @@ public:
 	int getMP() const;
 	int getSP() const;
 
-	virtual int takeDamage(int damage);
-	virtual void dealDamage(int damage, Entity* target);
-	virtual void heal(int amount);
+	virtual int takeDamage(int damage, STAT_TYPE type = HEALTH) = 0;
+	virtual void dealDamage(int damage, Entity* target, STAT_TYPE type = HEALTH);
+	virtual void heal(int amount, STAT_TYPE type = HEALTH);
 
 	void inflict(Effect* effect);
 	void cure(EFFECT_NAME effectName);

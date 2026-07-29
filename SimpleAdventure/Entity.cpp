@@ -99,33 +99,58 @@ void Entity::setSP(int SP)
 		throw StatOverMax();
 }
 
-int Entity::takeDamage(int damage)
+int& Entity::getStat(STAT_TYPE type)
 {
+	switch (type)
+	{
+	case HEALTH:
+		return HP;
+	case MANA:
+		return MP;
+	case STAMINA:
+		return SP;
+	}
+}
+
+int& Entity::getMaxStat(STAT_TYPE type)
+{
+	switch (type)
+	{
+	case HEALTH:
+		return maxHP;
+	case MANA:
+		return maxMP;
+	case STAMINA:
+		return maxSP;
+	}
+}
+
+int Entity::takeDamage(int damage, STAT_TYPE type)
+{
+	int& stat = getStat(type);
 	if (damage > 0)
 	{
-		if (damage < HP)
-			HP -= damage;
+		if (damage < stat)
+			stat -= damage;
 		else
-		{
-			HP = 0;
-			die();
-		}
+			stat = 0;
 		return damage;
 	}
 	return 0;
 }
 
-void Entity::dealDamage(int damage, Entity* target)
+void Entity::dealDamage(int damage, Entity* target, STAT_TYPE type)
 {
-	target->takeDamage(damage);
+	target->takeDamage(damage, type);
 }
 
-void Entity::heal(int amount)
+void Entity::heal(int amount, STAT_TYPE type)
 {
-	if (amount + HP <= maxHP)
-		HP += amount;
+	int& stat = getStat(type);
+	if (amount + stat <= getMaxStat(type))
+		stat += amount;
 	else
-		HP = maxHP;
+		stat = getMaxStat(type);
 }
 
 void Entity::inflict(Effect* effect)

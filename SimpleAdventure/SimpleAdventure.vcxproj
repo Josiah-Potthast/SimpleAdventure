@@ -146,7 +146,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="NonPlayerCharacter.h" />
-    <ClInclude Include="Object.h" />
     <ClInclude Include="PlayerCharacter.h" />
     <ClInclude Include="Sword.h" />
     <ClInclude Include="System.h" />
@@ -160,7 +159,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="NonPlayerCharacter.cpp" />
-    <ClCompile Include="Object.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="SimpleAdventure.cpp" />
     <ClCompile Include="Sword.cpp" />

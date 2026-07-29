@@ -46,8 +46,22 @@ void PlayerCharacter::loseExperience(int exp)
 void PlayerCharacter::levelUp()
 {
 	level++;
-	// display a menu to get choice of increasing hp, mp, or sp
-	// gain class level
+	int choice = Console::displayMenu(vector<string> 
+	{"Increase Max HP", "Increase Max MP", "Increase Max SP"});
+	switch (choice)
+	{
+	case 1:
+		setMaxHP(getMaxHP() + STAT_INCREASE);
+		break;
+	case 2:
+		setMaxMP(getMaxMP() + STAT_INCREASE);
+		break;
+	case 3:
+		setMaxSP(getMaxSP() + STAT_INCREASE);
+		break;
+	default:
+		throw LevelUpException();
+	}
 
 	// Full heal
 	setHP(getMaxHP());
@@ -55,29 +69,31 @@ void PlayerCharacter::levelUp()
 	setSP(getMaxSP());
 }
 
-int PlayerCharacter::takeDamage(int damage)
+int PlayerCharacter::takeDamage(int damage, STAT_TYPE type)
 {
 	int realDamage = this->Entity::takeDamage(damage);
 	Console::print("You take " + to_string(realDamage) + " damage\n");
 	if (damage >= 0 && getHP() > 0)
 		gainExperience(realDamage);
+	if (getHP() <= 0)
+		die();
 	return realDamage;
 }
 
-void PlayerCharacter::dealDamage(int damage, Entity* target)
+void PlayerCharacter::dealDamage(int damage, Entity* target, STAT_TYPE type)
 {
 	int realDamage = target->takeDamage(damage);
-	Console::print("You deal " + to_string(realDamage) + " damage\n");
 	if (damage >= 0)
 		gainExperience(realDamage);
 }
 
-void PlayerCharacter::heal(int amount)
+void PlayerCharacter::heal(int amount, STAT_TYPE type)
 {
 	Entity::heal(amount);
 }
 
 void PlayerCharacter::die()
 {
+	Entity::die();
 	Console::print("You have died\n");
 }
