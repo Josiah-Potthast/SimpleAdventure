@@ -8,12 +8,25 @@ using namespace std;
 
 int main()
 {
+	Game game;
+	for (int i = 0; i < 3; i++)
+	{
+		game.spawn(DUMMY);
+		cout << game.getNumNPCs() << endl << endl;
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		game.despawn(game.getNPC(0));
+		cout << game.getNumNPCs() << endl << endl;
+	}
+
 	PlayerCharacter player;
 	Entity* target = new Dummy();
 	player.gainItem(new Sword());
 	player.gainItem(new Sword());
 	player.gainItem(new Sword());
 	player.equip(player.getInventory()[0]);
+
 	for (int i = 0; i < 200; i++)
 	{
 		player.dealDamage(player.getHolding()->use(), target);
