@@ -7,7 +7,7 @@ class Weapon : public Item
 private:
 	int baseDamage;
 public:
-	Weapon(ITEM_NAME item);
+	Weapon(ITEM_NAME item, int weight);
 
 	int getBaseDamage() const;
 	void setBaseDamage(int newBase);

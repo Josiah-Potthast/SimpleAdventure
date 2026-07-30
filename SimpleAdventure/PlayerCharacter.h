@@ -20,6 +20,7 @@ public:
 	void gainExperience(int exp);
 	void loseExperience(int exp);
 	void levelUp();
+	void checkStatus();
 
 	int takeDamage(int damage, STAT_TYPE type = HEALTH) override;
 	void dealDamage(int damage, Entity* target, STAT_TYPE type = HEALTH) override;
@@ -28,6 +29,7 @@ public:
 	void die() override;
 
 	class LevelUpException {};
+	class GameOver {};
 };
 
 #endif

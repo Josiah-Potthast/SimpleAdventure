@@ -1,6 +1,6 @@
 #include "Weapon.h"
 
-Weapon::Weapon(ITEM_NAME item) : Item(item), baseDamage(5)
+Weapon::Weapon(ITEM_NAME item, int weight) : Item(item, weight), baseDamage(5)
 {
 
 }

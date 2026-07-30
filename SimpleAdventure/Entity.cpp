@@ -125,15 +125,26 @@ int& Entity::getMaxStat(STAT_TYPE type)
 	}
 }
 
+void Entity::attack(Entity* target)
+{
+	dealDamage(holding->use(), target, static_cast<STAT_TYPE>(holding->getStatType()));
+	this->takeDamage(holding->getWeight(), STAMINA);
+}
+
 int Entity::takeDamage(int damage, STAT_TYPE type)
 {
 	int& stat = getStat(type);
 	if (damage > 0)
 	{
-		if (damage < stat)
+		if (damage > stat && stat > 0)
+		{
+			damage = stat;
 			stat -= damage;
+		}
+		else if (stat == 0 && &stat != &HP)
+			damage = takeDamage(damage / 2, HEALTH);
 		else
-			stat = 0;
+			stat -= damage;
 		return damage;
 	}
 	return 0;

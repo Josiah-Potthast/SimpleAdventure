@@ -27,10 +27,17 @@ int main()
 	player.gainItem(new Sword());
 	player.equip(player.getInventory()[0]);
 
-	for (int i = 0; i < 200; i++)
+	try
 	{
-		player.dealDamage(player.getHolding()->use(), target);
-		Console::print("Dummy HP: " + to_string(target->getHP()) + "\n");
+		for (int i = 0; i < 200; i++)
+		{
+			player.attack(target);
+			Console::print("Dummy HP: " + to_string(target->getHP()) + "\n");
+		}
+	}
+	catch (PlayerCharacter::GameOver e)
+	{
+		return 0;
 	}
 
 	vector<Item*> i = player.getInventory();

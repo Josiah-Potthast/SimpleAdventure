@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(ITEM_NAME item) : name(item)
+Item::Item(ITEM_NAME item, int weight) : name(item), weight(weight)
 {
 
 }
@@ -19,4 +19,9 @@ string Item::getName(ITEM_NAME item)
 	default:
 		throw ItemNotFound();
 	}
+}
+
+int Item::getWeight() const
+{
+	return weight;
 }

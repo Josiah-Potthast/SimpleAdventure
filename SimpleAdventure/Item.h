@@ -10,12 +10,15 @@ class Item
 {
 private:
 	ITEM_NAME name;
+	int weight;
 public:
-	Item(ITEM_NAME item);
+	Item(ITEM_NAME item, int weight);
 
 	ITEM_NAME getNameEnum() const;
 
 	virtual int use() = 0;
+	virtual int getStatType() const = 0;
+	virtual int getWeight() const;
 
 	static string getName(ITEM_NAME item);
 

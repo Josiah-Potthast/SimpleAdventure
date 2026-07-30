@@ -9,6 +9,7 @@ public:
 	Sword();
 
 	int attack() override;
+	int getStatType() const override;
 };
 
 #endif

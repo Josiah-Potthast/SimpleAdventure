@@ -1,6 +1,6 @@
 #include "Sword.h"
 
-Sword::Sword() : Weapon(SWORD)
+Sword::Sword() : Weapon(SWORD, 2)
 {
 
 }
@@ -8,4 +8,9 @@ Sword::Sword() : Weapon(SWORD)
 int Sword::attack()
 {
 	return Weapon::attack();
+}
+
+int Sword::getStatType() const
+{
+	return 0; // HP
 }

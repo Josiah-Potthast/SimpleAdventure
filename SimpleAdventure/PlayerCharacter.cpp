@@ -46,6 +46,9 @@ void PlayerCharacter::loseExperience(int exp)
 void PlayerCharacter::levelUp()
 {
 	level++;
+	Console::print("Level Up! You are now level " + to_string(level) + "\n");
+	checkStatus();
+
 	int choice = Console::displayMenu(vector<string> 
 	{"Increase Max HP", "Increase Max MP", "Increase Max SP"});
 	switch (choice)
@@ -69,11 +72,19 @@ void PlayerCharacter::levelUp()
 	setSP(getMaxSP());
 }
 
+void PlayerCharacter::checkStatus()
+{
+	Console::print("HP: " + to_string(getHP()) + "/" + to_string(getMaxHP()) + "\t");
+	Console::print("MP: " + to_string(getMP()) + "/" + to_string(getMaxMP()) + "\t");
+	Console::print("SP: " + to_string(getSP()) + "/" + to_string(getMaxSP()) + "\n");
+}
+
 int PlayerCharacter::takeDamage(int damage, STAT_TYPE type)
 {
-	int realDamage = this->Entity::takeDamage(damage);
-	Console::print("You take " + to_string(realDamage) + " damage\n");
-	if (damage >= 0 && getHP() > 0)
+	int realDamage = this->Entity::takeDamage(damage, type);
+	if (type == HEALTH)
+		Console::print("You take " + to_string(realDamage) + " damage\n");
+	if (damage >= 0 && type == HEALTH)
 		gainExperience(realDamage);
 	if (getHP() <= 0)
 		die();
@@ -96,4 +107,5 @@ void PlayerCharacter::die()
 {
 	Entity::die();
 	Console::print("You have died\n");
+	throw GameOver();
 }
