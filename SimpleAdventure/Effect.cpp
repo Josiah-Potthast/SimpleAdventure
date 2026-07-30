@@ -9,7 +9,6 @@ Effect::Effect(int stacks)
 {
 	this->stacks = stacks;
 	positive = true;
-	name = EFFECT;
 }
 
 int Effect::getStacks() const

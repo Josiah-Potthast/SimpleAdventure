@@ -29,7 +29,6 @@ public:
 
 enum EFFECT_NAME
 {
-	EFFECT,
 	POISON,
 	BURN,
 	SHOCK,

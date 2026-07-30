@@ -51,3 +51,21 @@ void Game::despawn(NonPlayerCharacter* npc)
 	else
 		throw CannotDespawn();
 }
+
+EFFECT_NAME Game::random(Effect* type) const
+{
+	if (type == dynamic_cast<Effect*>(type))
+		return static_cast<EFFECT_NAME>(rand() % EFFECT_TYPES);
+}
+
+ITEM_NAME Game::random(Item* type) const
+{
+	if (type == dynamic_cast<Item*>(type))
+		return static_cast<ITEM_NAME>(rand() % ITEM_TYPES);
+}
+
+NPC_NAME Game::random(NonPlayerCharacter* type) const
+{
+	if (type == dynamic_cast<NonPlayerCharacter*>(type))
+		return static_cast<NPC_NAME>(rand() % NPC_TYPES);
+}

@@ -7,6 +7,8 @@ class Sword : public Weapon
 private:
 public:
 	Sword();
+
+	int attack() override;
 };
 
 #endif

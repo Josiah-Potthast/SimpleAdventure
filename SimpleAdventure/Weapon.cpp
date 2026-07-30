@@ -36,8 +36,11 @@ int Weapon::attack()
 		Console::print("Critical Hit! ");
 		return calcDamage() * 2;
 	}
-	else if (attack == 0)
+	else if (attack == 1)
+	{
+		Console::print("Whiff! ");
 		return 0;
+	}
 	else
 		return calcDamage();
 }

@@ -13,7 +13,7 @@ public:
 	void setBaseDamage(int newBase);
 	int calcDamage();
 
-	int attack();
+	virtual int attack() = 0;
 
 	int use() override;
 };
