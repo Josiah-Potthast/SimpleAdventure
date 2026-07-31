@@ -8,21 +8,26 @@ enum EFFECT_NAME;
 class Effect
 {
 private:
-	int stacks; // used to track multiple instances/stronger effects for a given target
-	bool positive; // true for buffs (good effects), false for debuffs (bad effects)
-	EFFECT_NAME name;
+	int poison;
+	int burn;
+	int shock;
+	int freeze;
+	// returns a reference to the relevant variable
+	int& getEffect(EFFECT_NAME effect);
 public:
 	Effect();
-	Effect(int stacks);
 
-	int getStacks() const;
-	void setStacks(int stacks);
-	bool isPositive() const;
-	EFFECT_NAME getNameEnum();
+	// returns the non-reference value of an effect
+	int getStacks(EFFECT_NAME effect);
+	bool isPositive(EFFECT_NAME effect) const;
+	
+	void inflict(EFFECT_NAME effect, int stacks = 1);
+	void cure(EFFECT_NAME effect);
+	void cleanse();
+	void dispel();
+	void clear();
 
 	static string getName(EFFECT_NAME effect);
-
-	virtual void trigger() = 0;
 
 	class EffectNotFound {};
 };

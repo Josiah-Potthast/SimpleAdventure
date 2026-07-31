@@ -27,7 +27,6 @@ private:
 	int HP; // current hit points/health points
 	int MP; // current mana points
 	int SP; // current stamina points
-	vector<Effect*> effects;
 	vector<Item*> inventory;
 	Item* holding;
 	int& getStat(STAT_TYPE type);
@@ -43,6 +42,8 @@ protected:
 	void setHP(int HP);
 	void setMP(int MP);
 	void setSP(int SP);
+
+	Effect effects;
 public:
 	int getMaxHP() const;
 	int getMaxMP() const;
@@ -55,13 +56,6 @@ public:
 	virtual int takeDamage(int damage, STAT_TYPE type = HEALTH) = 0;
 	virtual void dealDamage(int damage, Entity* target, STAT_TYPE type = HEALTH);
 	virtual void heal(int amount, STAT_TYPE type = HEALTH);
-
-	void inflict(Effect* effect);
-	void cure(EFFECT_NAME effectName);
-	void cleanse();
-	void dispel();
-	void clear();
-	void checkStatus();
 
 	void gainItem(Item* item);
 	void equip(Item* item);

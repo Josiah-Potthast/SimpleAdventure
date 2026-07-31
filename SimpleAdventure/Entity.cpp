@@ -164,60 +164,6 @@ void Entity::heal(int amount, STAT_TYPE type)
 		stat = getMaxStat(type);
 }
 
-void Entity::inflict(Effect* effect)
-{
-	for (int i = 0; i < effects.size(); i++)
-		if (effects[i]->getNameEnum() == effect->getNameEnum())
-		{
-			effects[i]->setStacks(effects[i]->getStacks() + effect->getStacks());
-			return;
-		}
-	effects.push_back(effect);
-}
-
-void Entity::cure(EFFECT_NAME effectName)
-{
-	for (int i = 0; i < effects.size(); i++)
-		if (effects[i]->getNameEnum() == effectName)
-		{
-			for (int j = i; j < effects.size() - 1; j++)
-			{
-				Effect* temp = effects[j];
-				effects[j] = effects[j + 1];
-				effects[j + 1] = temp;
-			}
-			break;
-		}
-	if (effects[effects.size()]->getNameEnum() == effectName)
-		effects.pop_back();
-}
-
-void Entity::cleanse()
-{
-	for (int i = 0; i < effects.size(); i++)
-		if (effects[i]->isPositive() == false)
-			cure(effects[i]->getNameEnum());
-}
-
-void Entity::dispel()
-{
-	for (int i = 0; i < effects.size(); i++)
-		if (effects[i]->isPositive() == true)
-			cure(effects[i]->getNameEnum());
-}
-
-void Entity::clear()
-{
-	for (int i = 0; i < effects.size(); i++)
-		cure(effects[i]->getNameEnum());
-}
-
-void Entity::checkStatus()
-{
-	for (Effect* e : effects)
-		Console::print(Effect::getName(e->getNameEnum()) + "\n");
-}
-
 void Entity::gainItem(Item* item)
 {
 	inventory.push_back(item);
@@ -240,5 +186,5 @@ Item* Entity::getHolding()
 
 void Entity::die()
 {
-	clear();
+	
 }

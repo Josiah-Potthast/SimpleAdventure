@@ -1,41 +1,90 @@
 #include "Effect.h"
 
-Effect::Effect() : Effect(1)
+Effect::Effect()
 {
 
 }
 
-Effect::Effect(int stacks)
+int& Effect::getEffect(EFFECT_NAME effect)
 {
-	this->stacks = stacks;
-	positive = true;
+	switch (effect)
+	{
+	case POISON:
+		return poison;
+	case BURN:
+		return burn;
+	case SHOCK:
+		return shock;
+	case FREEZE:
+		return freeze;
+	default:
+		throw EffectNotFound();
+	}
 }
 
-int Effect::getStacks() const
+int Effect::getStacks(EFFECT_NAME effect)
 {
+	int stacks = getEffect(effect);
 	return stacks;
 }
 
-void Effect::setStacks(int stacks)
+bool Effect::isPositive(EFFECT_NAME effect) const
 {
-	if (stacks >= 0)
-		this->stacks = stacks;
+	switch (effect)
+	{
+	case POISON:
+	case BURN:
+	case SHOCK:
+	case FREEZE:
+		return false;
+	default:
+		throw EffectNotFound();
+	}
 }
 
-bool Effect::isPositive() const
+void Effect::inflict(EFFECT_NAME effect, int stacks)
 {
-	return positive;
+	getEffect(effect) += stacks;
 }
 
-EFFECT_NAME Effect::getNameEnum()
+void Effect::cure(EFFECT_NAME effect)
 {
-	return name;
+	getEffect(effect) = 0;
+}
+
+void Effect::cleanse()
+{
+	for (int i = POISON; i < FREEZE; i++)
+		if (!isPositive(static_cast<EFFECT_NAME>(i)))
+			cure(static_cast<EFFECT_NAME>(i));
+}
+
+void Effect::dispel()
+{
+	for (int i = POISON; i < FREEZE; i++)
+		if (isPositive(static_cast<EFFECT_NAME>(i)))
+			cure(static_cast<EFFECT_NAME>(i));
+}
+
+void Effect::clear()
+{
+	for (int i = POISON; i < FREEZE; i++)
+		cure(static_cast<EFFECT_NAME>(i));
+			
 }
 
 string Effect::getName(EFFECT_NAME effect)
 {
 	switch (effect)
 	{
+	case POISON:
+		return "poison";
+	case BURN:
+		return "burn";
+	case SHOCK:
+		return "shock";
+	case FREEZE:
+		return "freeze";
 	default:
 		throw EffectNotFound();
 	}
