@@ -127,7 +127,7 @@ int& Entity::getMaxStat(STAT_TYPE type)
 
 void Entity::attack(Entity* target)
 {
-	dealDamage(holding->use(), target, static_cast<STAT_TYPE>(holding->getStatType()));
+	holding->use(target);
 	this->takeDamage(holding->getWeight(), STAMINA);
 }
 

@@ -91,6 +91,13 @@ int PlayerCharacter::takeDamage(int damage, STAT_TYPE type)
 	return realDamage;
 }
 
+void PlayerCharacter::attack(Entity* target)
+{
+	int realDamage = getHolding()->use(target);
+	if (realDamage >= 0)
+		gainExperience(realDamage);
+}
+
 void PlayerCharacter::dealDamage(int damage, Entity* target, STAT_TYPE type)
 {
 	int realDamage = target->takeDamage(damage);
@@ -100,7 +107,7 @@ void PlayerCharacter::dealDamage(int damage, Entity* target, STAT_TYPE type)
 
 void PlayerCharacter::heal(int amount, STAT_TYPE type)
 {
-	Entity::heal(amount);
+	Entity::heal(amount, type);
 }
 
 void PlayerCharacter::die()

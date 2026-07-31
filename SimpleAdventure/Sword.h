@@ -8,7 +8,7 @@ private:
 public:
 	Sword();
 
-	int attack() override;
+	int attack(Entity* target) override;
 	int getStatType() const override;
 };
 

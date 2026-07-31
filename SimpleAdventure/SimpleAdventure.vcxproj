@@ -147,6 +147,8 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="NonPlayerCharacter.h" />
     <ClInclude Include="PlayerCharacter.h" />
+    <ClInclude Include="Spell.h" />
+    <ClInclude Include="Spellbook.h" />
     <ClInclude Include="Sword.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Weapon.h" />
@@ -161,6 +163,8 @@
     <ClCompile Include="NonPlayerCharacter.cpp" />
     <ClCompile Include="PlayerCharacter.cpp" />
     <ClCompile Include="SimpleAdventure.cpp" />
+    <ClCompile Include="Spell.cpp" />
+    <ClCompile Include="Spellbook.cpp" />
     <ClCompile Include="Sword.cpp" />
     <ClCompile Include="System.cpp" />
     <ClCompile Include="Weapon.cpp" />

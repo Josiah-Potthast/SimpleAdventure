@@ -16,7 +16,7 @@ void Weapon::setBaseDamage(int newBase)
 		baseDamage = newBase;
 }
 
-int Weapon::calcDamage()
+int Weapon::calcDamage() const
 {
 	int damageSpread = baseDamage / 5;
 	int bonus = (rand() % (damageSpread + 1));
@@ -27,25 +27,25 @@ int Weapon::calcDamage()
 		return baseDamage - bonus;
 }
 
-int Weapon::attack()
+int Weapon::attack(Entity* target)
 {
 	int attack = (rand() % 20) + 1;
 
 	if (attack == 20)
 	{
 		Console::print("Critical Hit! ");
-		return calcDamage() * 2;
+		return target->takeDamage(calcDamage() * 2);
 	}
 	else if (attack == 1)
 	{
 		Console::print("Whiff! ");
-		return 0;
+		return target->takeDamage(0);
 	}
 	else
-		return calcDamage();
+		return target->takeDamage(calcDamage());
 }
 
-int Weapon::use()
+int Weapon::use(Entity* target)
 {
-	return attack();
+	return attack(target);
 }

@@ -5,9 +5,9 @@ Sword::Sword() : Weapon(SWORD, 2)
 
 }
 
-int Sword::attack()
+int Sword::attack(Entity* target)
 {
-	return Weapon::attack();
+	return Weapon::attack(target);
 }
 
 int Sword::getStatType() const

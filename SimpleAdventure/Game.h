@@ -5,6 +5,7 @@
 #include "NonPlayerCharacter.h"
 #include "Dummy.h"
 #include "Sword.h"
+#include "Spellbook.h"
 using namespace std;
 
 enum DIFFICULTY;

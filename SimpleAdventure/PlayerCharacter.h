@@ -22,6 +22,7 @@ public:
 	void levelUp();
 	void checkStatus();
 
+	void attack(Entity* target) override;
 	int takeDamage(int damage, STAT_TYPE type = HEALTH) override;
 	void dealDamage(int damage, Entity* target, STAT_TYPE type = HEALTH) override;
 	void heal(int amount, STAT_TYPE type = HEALTH) override;

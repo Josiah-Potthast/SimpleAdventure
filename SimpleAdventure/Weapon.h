@@ -11,11 +11,11 @@ public:
 
 	int getBaseDamage() const;
 	void setBaseDamage(int newBase);
-	int calcDamage();
+	int calcDamage() const;
 
-	virtual int attack() = 0;
+	virtual int attack(Entity* target) = 0;
 
-	int use() override;
+	int use(Entity* target) override;
 };
 
 #endif
