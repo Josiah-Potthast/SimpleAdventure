@@ -23,7 +23,7 @@ int PlayerCharacter::getLevel() const
 
 void PlayerCharacter::gainExperience(int exp)
 {
-	double expNeeded = 10;
+	double expNeeded = 100;
 	for (int i = 1; i < level; i++)
 		expNeeded *= EXP_SCALING;
 
@@ -91,7 +91,7 @@ int PlayerCharacter::takeDamage(int damage, STAT_TYPE type)
 	return realDamage;
 }
 
-void PlayerCharacter::attack(Entity* target)
+void PlayerCharacter::act(Entity* target)
 {
 	int realDamage = getHolding()->use(target);
 	if (realDamage >= 0)

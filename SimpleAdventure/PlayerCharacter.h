@@ -7,7 +7,7 @@ class PlayerCharacter : public Entity
 private:
 	int experience;
 	int level;
-	const double EXP_SCALING = 2; // multiplier for required xp per level
+	const double EXP_SCALING = 1.2; // multiplier for required xp per level
 	const int STAT_INCREASE = 5; // how much a stat increases upon level up
 	// character class
 public:
@@ -22,7 +22,7 @@ public:
 	void levelUp();
 	void checkStatus();
 
-	void attack(Entity* target) override;
+	void act(Entity* target) override;
 	int takeDamage(int damage, STAT_TYPE type = HEALTH) override;
 	void dealDamage(int damage, Entity* target, STAT_TYPE type = HEALTH) override;
 	void heal(int amount, STAT_TYPE type = HEALTH) override;

@@ -18,20 +18,23 @@ private:
 	PlayerCharacter player;
 	vector<NonPlayerCharacter*> NPCs;
 
-	// tally of non-abstract effects
-	const int EFFECT_TYPES = 0;
+	// tally of effect types
+	const int EFFECT_TYPES = 5;
 	// tally of non-abstract items
-	const int ITEM_TYPES = 1;
+	const int ITEM_TYPES = 2;
 	// tally of non-abstract npcs
 	const int NPC_TYPES = 1;
 public:
 	Game();
 	Game(DIFFICULTY mode);
+	~Game();
 
 	int getNumNPCs() const;
 	NonPlayerCharacter* getNPC(int index) const;
 	void spawn(NPC_NAME npc);
 	void despawn(NonPlayerCharacter* npc);
+	void takeTurn(PlayerCharacter* player);
+	void takeTurn(NonPlayerCharacter* npc);
 
 	EFFECT_NAME random(Effect* type) const;
 	ITEM_NAME random(Item* type) const;

@@ -11,6 +11,7 @@ private:
 	int poison;
 	int burn;
 	int shock;
+	int stun;
 	int freeze;
 	// returns a reference to the relevant variable
 	int& getEffect(EFFECT_NAME effect);
@@ -22,7 +23,7 @@ public:
 	bool isPositive(EFFECT_NAME effect) const;
 	
 	void inflict(EFFECT_NAME effect, int stacks = 1);
-	void cure(EFFECT_NAME effect);
+	void cure(EFFECT_NAME effect, int stacks = 1);
 	void cleanse();
 	void dispel();
 	void clear();
@@ -37,6 +38,7 @@ enum EFFECT_NAME
 	POISON,
 	BURN,
 	SHOCK,
+	STUN,
 	FREEZE,
 };
 

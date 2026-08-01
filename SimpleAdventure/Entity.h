@@ -42,9 +42,9 @@ protected:
 	void setHP(int HP);
 	void setMP(int MP);
 	void setSP(int SP);
-
-	Effect effects;
 public:
+	Effect effects;
+
 	int getMaxHP() const;
 	int getMaxMP() const;
 	int getMaxSP() const;
@@ -52,7 +52,7 @@ public:
 	int getMP() const;
 	int getSP() const;
 
-	virtual void attack(Entity* target);
+	virtual void act(Entity* target);
 	virtual int takeDamage(int damage, STAT_TYPE type = HEALTH) = 0;
 	virtual void dealDamage(int damage, Entity* target, STAT_TYPE type = HEALTH);
 	virtual void heal(int amount, STAT_TYPE type = HEALTH);
@@ -60,6 +60,7 @@ public:
 	void gainItem(Item* item);
 	void equip(Item* item);
 	vector<Item*> getInventory() const;
+	vector<string> getInventorList() const;
 	Item* getHolding();
 
 	virtual void die() = 0;

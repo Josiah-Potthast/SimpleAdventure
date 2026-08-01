@@ -125,7 +125,7 @@ int& Entity::getMaxStat(STAT_TYPE type)
 	}
 }
 
-void Entity::attack(Entity* target)
+void Entity::act(Entity* target)
 {
 	holding->use(target);
 	this->takeDamage(holding->getWeight(), STAMINA);
@@ -177,6 +177,14 @@ void Entity::equip(Item* item)
 vector<Item*> Entity::getInventory() const
 {
 	return inventory;
+}
+
+vector<string> Entity::getInventorList() const
+{
+	vector<string> list;
+	for (int i = 0; i < inventory.size(); i++)
+		list.push_back(inventory[i]->getName(inventory[i]->getNameEnum()));
+	return list;
 }
 
 Item* Entity::getHolding()

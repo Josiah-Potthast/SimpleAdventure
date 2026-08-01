@@ -15,6 +15,8 @@ int& Effect::getEffect(EFFECT_NAME effect)
 		return burn;
 	case SHOCK:
 		return shock;
+	case STUN:
+		return stun;
 	case FREEZE:
 		return freeze;
 	default:
@@ -35,6 +37,7 @@ bool Effect::isPositive(EFFECT_NAME effect) const
 	case POISON:
 	case BURN:
 	case SHOCK:
+	case STUN:
 	case FREEZE:
 		return false;
 	default:
@@ -47,9 +50,12 @@ void Effect::inflict(EFFECT_NAME effect, int stacks)
 	getEffect(effect) += stacks;
 }
 
-void Effect::cure(EFFECT_NAME effect)
+void Effect::cure(EFFECT_NAME effect, int stacks)
 {
-	getEffect(effect) = 0;
+	if (getEffect(effect) >= stacks)
+		getEffect(effect) -= stacks;
+	else
+		getEffect(effect) = 0;
 }
 
 void Effect::cleanse()
@@ -83,6 +89,8 @@ string Effect::getName(EFFECT_NAME effect)
 		return "burn";
 	case SHOCK:
 		return "shock";
+	case STUN:
+		return "stun";
 	case FREEZE:
 		return "freeze";
 	default:
