@@ -10,16 +10,9 @@ int main()
 {
 	System::quickStart();
 	Game game;
-	for (int i = 0; i < 3; i++)
-	{
-		game.spawn(DUMMY);
-		cout << game.getNumNPCs() << endl << endl;
-	}
-	for (int i = 0; i < 3; i++)
-	{
-		game.despawn(game.getNPC(0));
-		cout << game.getNumNPCs() << endl << endl;
-	}
+	game.spawn(DUMMY);
+	game.giveItem(SWORD);
+	game.playGame();
 
 	PlayerCharacter player;
 	Entity* target = new Dummy();

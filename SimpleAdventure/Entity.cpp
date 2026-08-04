@@ -127,8 +127,13 @@ int& Entity::getMaxStat(STAT_TYPE type)
 
 void Entity::act(Entity* target)
 {
-	holding->use(target);
-	this->takeDamage(holding->getWeight(), STAMINA);
+	if (holding == nullptr)
+		target->takeDamage(1);
+	else
+	{
+		holding->use(target);
+		this->takeDamage(holding->getWeight(), STAMINA);
+	}
 }
 
 int Entity::takeDamage(int damage, STAT_TYPE type)

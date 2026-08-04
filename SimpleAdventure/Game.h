@@ -27,14 +27,21 @@ private:
 public:
 	Game();
 	Game(DIFFICULTY mode);
-	~Game();
+	virtual ~Game(); 
 
 	int getNumNPCs() const;
 	NonPlayerCharacter* getNPC(int index) const;
 	void spawn(NPC_NAME npc);
 	void despawn(NonPlayerCharacter* npc);
+	Item* createItem(ITEM_NAME item);
+	// gives an item to an entity, defaults to the player member
+	void giveItem(Item* item, Entity* target = nullptr);
+	void giveItem(ITEM_NAME item, Entity* target = nullptr);
 	void takeTurn(PlayerCharacter* player);
 	void takeTurn(NonPlayerCharacter* npc);
+	void statusTrigger(Entity* target);
+	void playRound();
+	void playGame();
 
 	EFFECT_NAME random(Effect* type) const;
 	ITEM_NAME random(Item* type) const;

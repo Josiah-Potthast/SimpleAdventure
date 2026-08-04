@@ -8,6 +8,8 @@ private:
 public:
 	Dummy();
 
+	void act(Entity* target) override;
+
 	void die();
 };
 

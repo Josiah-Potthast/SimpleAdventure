@@ -57,8 +57,8 @@ public:
 	virtual void dealDamage(int damage, Entity* target, STAT_TYPE type = HEALTH);
 	virtual void heal(int amount, STAT_TYPE type = HEALTH);
 
-	void gainItem(Item* item);
-	void equip(Item* item);
+	virtual void gainItem(Item* item);
+	virtual void equip(Item* item);
 	vector<Item*> getInventory() const;
 	vector<string> getInventorList() const;
 	Item* getHolding();

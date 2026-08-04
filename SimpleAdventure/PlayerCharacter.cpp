@@ -93,7 +93,11 @@ int PlayerCharacter::takeDamage(int damage, STAT_TYPE type)
 
 void PlayerCharacter::act(Entity* target)
 {
-	int realDamage = getHolding()->use(target);
+	int realDamage = 0;
+	if (getHolding() == nullptr)
+		realDamage = target->takeDamage(1);
+	else
+		realDamage = getHolding()->use(target);
 	if (realDamage >= 0)
 		gainExperience(realDamage);
 }
