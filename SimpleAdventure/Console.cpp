@@ -52,5 +52,5 @@ void Console::setCharDelay(int ms)
 	if (ms >= 0)
 		charDelay = ms;
 	else
-		throw NegativeCharDelay();
+		charDelay = 0;
 }

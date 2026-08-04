@@ -7,13 +7,15 @@ using namespace std;
 
 class Game;
 
+// holds and manages a vector of Game objects
 class System
 {
 private:
 	inline static vector<Game> games;
 public:
-	// getters and setters for settings
+	// creates a custom Game (unimplemented)
 	static void startGame(/*parameters*/);
+	// creates a default Game (mostly unimplemented)
 	static void quickStart();
 };
 

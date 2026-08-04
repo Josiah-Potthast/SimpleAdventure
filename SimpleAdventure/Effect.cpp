@@ -62,20 +62,20 @@ void Effect::cleanse()
 {
 	for (int i = POISON; i < FREEZE; i++)
 		if (!isPositive(static_cast<EFFECT_NAME>(i)))
-			cure(static_cast<EFFECT_NAME>(i));
+			cure(static_cast<EFFECT_NAME>(i), getEffect(static_cast<EFFECT_NAME>(i)));
 }
 
 void Effect::dispel()
 {
 	for (int i = POISON; i < FREEZE; i++)
 		if (isPositive(static_cast<EFFECT_NAME>(i)))
-			cure(static_cast<EFFECT_NAME>(i));
+			cure(static_cast<EFFECT_NAME>(i), getEffect(static_cast<EFFECT_NAME>(i)));
 }
 
 void Effect::clear()
 {
 	for (int i = POISON; i < FREEZE; i++)
-		cure(static_cast<EFFECT_NAME>(i));
+		cure(static_cast<EFFECT_NAME>(i), getEffect(static_cast<EFFECT_NAME>(i)));
 			
 }
 
